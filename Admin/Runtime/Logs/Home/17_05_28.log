@@ -1,0 +1,143 @@
+[ 2017-05-28T22:34:31+08:00 ] 14.23.185.33 /bookstore/admin.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000017s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000102s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000065s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000132s ]
+
+[ 2017-05-28T22:34:31+08:00 ] 14.23.185.33 /bookstore/admin.php/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000011s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000065s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000039s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000091s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000061s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000132s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.067171s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.067245s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002370s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002407s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000039s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000061s ]
+
+[ 2017-05-28T22:34:37+08:00 ] 14.23.185.33 /bookstore/admin.php/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000019s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000121s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000042s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000077s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0009s ]
+SQL: SELECT * FROM `user` WHERE `user_phone` = '13217554571' AND `user_password` = 'a0a080f42e6f13b3a2df133f073095dd' LIMIT 1   [ RunTime:0.0003s ]
+SQL: UPDATE `user` SET `user_cookie`='49c20aa96646e90ca2a76073e30584c3' WHERE `user_id` = 1 [ RunTime:0.0294s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000130s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000168s ]
+
+[ 2017-05-28T22:34:38+08:00 ] 14.23.185.33 /bookstore/admin.php/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000012s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000076s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000027s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000059s ]
+SQL: SHOW COLUMNS FROM `book` [ RunTime:0.0005s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `book` WHERE `book_isdel` = 0 AND `book_state` = 0 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT * FROM `book` WHERE `book_isdel` = 0 AND `book_state` = 0  [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0003s ]
+SQL: SELECT `user_name`,`user_cookie`,`user_photo`,`user_phone`,`user_integral`,`user_grade`,`user_sys`,`user_time`,`user_password` FROM `user` WHERE `user_id` = 3 LIMIT 1   [ RunTime:0.0002s ]
+SQL: SHOW COLUMNS FROM `message` [ RunTime:0.0003s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `message` WHERE `book_id` = 29 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `user_name`,`user_cookie`,`user_photo`,`user_phone`,`user_integral`,`user_grade`,`user_sys`,`user_time`,`user_password` FROM `user` WHERE `user_id` = 5 LIMIT 1   [ RunTime:0.0401s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `message` WHERE `book_id` = 33 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `message` LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `message` LIMIT 1,7   [ RunTime:0.0000s ]
+SQL: SELECT `user_name`,`user_photo` FROM `user` WHERE `user_id` = 3 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT `user_name`,`user_photo` FROM `user` WHERE `user_id` = 8 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT `user_name`,`user_photo` FROM `user` WHERE `user_id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT `user_name`,`user_photo` FROM `user` WHERE `user_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `user_name`,`user_photo` FROM `user` WHERE `user_id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT `user_name`,`user_photo` FROM `user` WHERE `user_id` = 5 LIMIT 1   [ RunTime:0.0001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000073s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000127s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.029101s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.029145s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000035s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000053s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000038s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000071s ]
+
+[ 2017-05-28T22:34:53+08:00 ] 14.23.185.33 /bookstore/admin.php/Index/shopcontent.html?book_id=32
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000143s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000055s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000100s ]
+SQL: SHOW COLUMNS FROM `book` [ RunTime:0.0007s ]
+SQL: SELECT * FROM `book` WHERE `book_id` = 32 LIMIT 1   [ RunTime:0.0367s ]
+SQL: SHOW COLUMNS FROM `message` [ RunTime:0.0004s ]
+SQL: SELECT * FROM `message` WHERE `book_id` = 32  [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0003s ]
+SQL: SELECT * FROM `user` WHERE `user_id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT `user_photo` FROM `user` WHERE `user_id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT `user_name` FROM `user` WHERE `user_id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT `user_photo` FROM `user` WHERE `user_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `user_name` FROM `user` WHERE `user_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `user_photo` FROM `user` WHERE `user_id` = 5 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT `user_name` FROM `user` WHERE `user_id` = 5 LIMIT 1   [ RunTime:0.0001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000054s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000103s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.020085s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.020129s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000045s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000066s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000041s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000070s ]
+
+[ 2017-05-28T22:34:53+08:00 ] 14.23.185.33 /bookstore/admin.php/Index/shopcontent.html?book_id=32
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000020s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000131s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000046s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000086s ]
+SQL: SHOW COLUMNS FROM `book` [ RunTime:0.0006s ]
+SQL: SELECT * FROM `book` WHERE `book_id` = 32 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `message` [ RunTime:0.0004s ]
+SQL: SELECT * FROM `message` WHERE `book_id` = 32  [ RunTime:0.0001s ]
+SQL: SHOW COLUMNS FROM `user` [ RunTime:0.0004s ]
+SQL: SELECT * FROM `user` WHERE `user_id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT `user_photo` FROM `user` WHERE `user_id` = 1 LIMIT 1   [ RunTime:0.0001s ]
+SQL: SELECT `user_name` FROM `user` WHERE `user_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `user_photo` FROM `user` WHERE `user_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `user_name` FROM `user` WHERE `user_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `user_photo` FROM `user` WHERE `user_id` = 5 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `user_name` FROM `user` WHERE `user_id` = 5 LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000054s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000095s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005622s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005666s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000031s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000049s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000032s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000057s ]
+

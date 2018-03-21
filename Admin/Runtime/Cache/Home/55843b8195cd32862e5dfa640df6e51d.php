@@ -1,0 +1,271 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html>
+  <head>
+    <title>BookStore</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bookstore/Public/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bookstore/Public/css/all.css">
+    <script src="/bookstore/Public/jq/jquery-3.1.0.min.js"></script>
+    <script src="/bookstore/Public/bootstrap/js/bootstrap.min.js"></script>
+    <style type="text/css">
+      .p-style{
+        padding:2px 20px;
+        border-bottom:1px solid #ABABAB;
+      }
+      .word_hidden
+        {
+
+          overflow:hidden; 
+
+          text-overflow:ellipsis;
+
+          display:-webkit-box; 
+
+          -webkit-box-orient:vertical;
+
+          -webkit-line-clamp:3; 
+        }
+        .price_style
+        {
+          color:#ED6F00;
+          font-size:15px;
+
+        }
+        .fsize{
+          font-size: 16px;
+        }
+    </style>
+    <script type="text/javascript">
+    function sclick(book_id){  
+      var url="<?php echo U('Index:shopcontent');?>"+"?book_id="+book_id;
+      onclick=window.open(url);
+    }
+    </script>
+  </head>
+  <body style="margin-bottom:5px">
+    <nav class="navbar navbar-default" role="navigation" height="20px"> 
+    <div class="container"> 
+        <ul class="nav navbar-nav" style="padding:0 0 0 50px">
+            <li class="fsize"><a href="<?php echo U('Index/index');?>">首页</a></li>
+            <li class="fsize"><a href="<?php echo U('Search/index');?>">搜索</a></li>
+            <li class="fsize"><a href="<?php echo U('Index/personal');?>">我的</a></li>
+        </ul>
+    
+        <ul class="nav navbar-nav navbar-right"> 
+            <li class="fsize"><a href="<?php echo U('Index/loginout');?>"><span class="glyphicon glyphicon-log-in"></span> 退出</a></li> 
+        </ul>
+    </div> 
+</nav>
+
+  
+  <div class="container" style="width:80%;height:25%;">
+        
+    <!--书籍分类-->
+
+
+    <div style="width:22%;float:left"">
+      <img src="/bookstore/Public/images/bookstores.png"
+                 alt="通用的占位符缩略图" width="230px" height="74px">
+    <div style="border-bottom:2px solid #ABABAB;border-top:1px solid #ABABAB;border-right:2px solid #ABABAB;border-left:2px solid #ABABAB;width:100%;height:100%;">
+        <div class="col-xs-12" style="padding:2px 0px 0px 0px">
+            <p  style="font-size:16px;background-color:#2E3161;color:white">书籍分类</p>
+            
+            
+        <p class="p-style">
+          <a href="<?php echo U('/Search/booktype',array('type_id'=>4));?>">
+            <span class="glyphicon glyphicon-hand-right">人文科学</span>
+          </a>
+        </p>
+        <p class="p-style">
+          <a href="<?php echo U('/Search/booktype',array('type_id'=>6));?>">
+            <span class="glyphicon glyphicon-hand-right">外语学习</span>
+          </a>
+        </p>
+        <p class="p-style">
+          <a href="<?php echo U('/Search/booktype',array('type_id'=>7));?>">
+            <span class="glyphicon glyphicon-hand-right">文学艺术</span>
+          </a>
+        </p>
+        <p class="p-style">
+          <a href="<?php echo U('/Search/booktype',array('type_id'=>5));?>">
+            <span class="glyphicon glyphicon-hand-right">生活休闲</span>
+          </a>
+        </p>
+        <p class="p-style"> 
+          <a href="<?php echo U('/Search/booktype',array('type_id'=>2));?>">
+            <span class="glyphicon glyphicon-hand-right">经济管理</span>
+          </a>
+        </p>
+        <p class="p-style">
+          <a href="<?php echo U('/Search/booktype',array('type_id'=>3));?>">
+            <span class="glyphicon glyphicon-hand-right">考试教育</span>
+          </a>
+        </p>
+        <p class="p-style">
+          <a href="<?php echo U('/Search/booktype',array('type_id'=>9));?>">
+            <span class="glyphicon glyphicon-hand-right">自然科学</span>
+          </a>
+        </p>
+        <p class="p-style">
+          <a href="<?php echo U('/Search/booktype',array('type_id'=>10));?>">
+            <span class="glyphicon glyphicon-hand-right">计算机</span>
+          </a>
+        </p>
+        <p class="p-style">
+          <a href="<?php echo U('/Search/booktype',array('type_id'=>8));?>">
+            <span class="glyphicon glyphicon-hand-right">医学</span>
+          </a>
+        </p>
+        <p style="padding:0px 0px 20px 20px;margin-bottom: -12px ">
+          <a href="<?php echo U('/Search/booktype',array('type_id'=>1));?>">
+            <span class="glyphicon glyphicon-hand-right">所有分类</span>
+          </a>
+        </p>
+      </div>
+    </div><!--导航栏结束-->
+
+
+    <!--留言栏目，7-->
+
+
+    <div style="margin-top:-10px;border-bottom:2px solid #ABABAB;border-top:2px solid #ABABAB;border-right:2px solid #ABABAB;border-left:2px solid #ABABAB;width:100%;height:100%;">
+      <div class="col-xs-12" style="padding:0px 0px">
+        <p  style="font-size:16px;background-color:#2E3161;color:white">最新留言</p>
+      <?php if(is_array($message)): foreach($message as $key=>$vo): ?><div  class="row" style="border-bottom:1px solid #ABABAB;margin-right:-4px " onclick="sclick('<?php echo ($vo["book_id"]); ?>')">
+          <div class="col-xs-3" style="  border-right:1px solid #666;">
+            <a href="#" >
+            <!--用户头像-->
+               <img src="/bookstore/Public/uploads/<?php echo ($vo["user_photo"]); ?>" width="100%" height="100%">
+            </a>
+          </div>
+          <div class="col-xs-8" style="padding:0px 0px 0px 10px;font-size:16px">
+            <p>
+              <span><?php echo ($vo["user_name"]); ?></span>
+              <span style="padding:0px 0px 0px 30px ;font-size:13px"> <?php echo ($vo["message_time"]); ?></span>
+            </p>
+            <div class="word_hidden" style="font-size:14px;">
+              <?php echo ($vo["message_content"]); ?>
+            </div>
+          </div>
+        </div><?php endforeach; endif; ?>
+
+      </div><!--留言板-->
+
+    </div>
+
+  </div>
+    <!--索索栏目-->
+  <form action="<?php echo U('Search/index');?>" method="post">
+    <div style="width:78%;margin-top:20px;margin-bottom:20px;float:right;"">
+      <div class="col-xs-2" style=" text-align: right; vertical-align: center; padding:6px 1px 1px 1px">
+        <span >搜索商品</span>
+      </div>
+      <div class="col-xs-7">
+        <input type="text" class="form-control" name="search" placeholder="请输入要搜索的书籍" size="10">  
+      </div>
+      <div class="col-xs-3">
+        <button type="submit" class="btn btn-default">搜索</button>
+      </div>
+    </div>
+    <div id="myCarousel" class=" carousel slide" style="width:78%;height:25%;float:right;">
+  </form>
+      <!-- 轮播（Carousel）指标 -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>   
+      <!-- 轮播（Carousel）项目 -->
+      <div class="carousel-inner" >
+        <div class="item active" >
+          <img src="/bookstore/Public/uploads/one.jpg" alt="Third slide" style="width:900px;height:240px">
+        </div>
+        <div class="item" >
+          <img src="/bookstore/Public/uploads/two.jpg" alt="Third slide" style="width:900px;height:240px">
+        </div>
+        <div class="item" >
+          <img src="/bookstore/Public/uploads/th.jpg" alt="Third slide" style="width:900px;height:240px">
+        </div>
+      </div>
+      <!-- 轮播（Carousel）导航 -->
+      <a class="carousel-control left" href="#myCarousel" 
+         data-slide="prev">&lsaquo;</a>
+      <a class="carousel-control right" href="#myCarousel" 
+         data-slide="next">&rsaquo;</a>
+    </div>
+
+
+    <!-- 新书上架 12个-->
+
+
+    <div style="width:78%;height:25%;float:right;padding:20px 0px 0px  0px">
+      <div class="row " style="width:100%;margin-top:-21px;margin-left:1px;border-bottom:2px solid #080D5E;border-left:1px solid #C9CABB;border-right:1px solid #C9CABB;border-top:1px solid #C9CABB;padding:5px 0px 0px 3px;">
+        <div class="col-xs-12" style="text-align:left;padding:5px;font-size:18px; ">
+          <a href="#">          
+            新书上架
+          </a>
+        </div>
+        
+
+      </div>
+
+      <div class="row" style="width:100%;font-size:16px;line-height:30px;padding:5px 0px 3px 0px;border-bottom:1px solid #C9CABB;border-left:1px solid #C9CABB;border-right:1px solid #C9CABB;margin-left:1px;">
+        <div class="row">
+        <?php if(is_array($book)): foreach($book as $key=>$vo): ?><div class="col-sm-6 col-md-3" onclick="sclick('<?php echo ($vo["book_id"]); ?>')">
+               <div class="thumbnail">
+                  <img src="/bookstore/Public/uploads/<?php echo ($vo["book_urls"]); ?>" 
+                   alt="通用的占位符缩略图" style="width:160px;height:105px">
+                  <div class="caption">
+                      <h5><?php echo ($vo["book_name"]); ?>|<?php echo ($vo["book_author"]); ?></h5>
+                      <p class="price_style"><?php echo ($vo["book_price"]); ?></p>
+                      
+                  </div>
+               </div>
+          </div><?php endforeach; endif; ?>
+        </div>
+        <!-- 结束  --> 
+          
+      </div>
+    </div> 
+  </div>
+
+
+   <div><!--底部了-->
+  <div class="container" style="width:78%;padding:20px 0px 0px  0px ;height:25%;border-top:2px solid #2E3161;">
+    <div style="text-align:center;">
+      <div  class="col-xs-4" style="border-right:1px solid #ABABAB;">
+        <img src="/bookstore/Public/images/zheng.png" class="img-circle" width="70px" height="70px">
+        正品保障
+      </div>
+      <div class="col-xs-4" style="border-right:1px solid #ABABAB;；">
+        <img src="/bookstore/Public/images/gou.png" class="img-circle" width="70px" height="70px">
+        放心购物
+      </div>
+      <div class="col-xs-4" >
+        <img src="/bookstore/Public/images/mian.png" class="img-circle" width="70px" height="70px">
+        当面交付
+      </div>
+      
+    </div>
+    
+
+  </div>
+
+  <!--底部导航栏-->
+  <div style="width:100%;margin-top:20px;padding:5px 5px 0px  0px ;height:25%;border-top:2px solid #C9CABB;text-align:center;font-size:12px">
+      <p>
+      Copyright (C) 旧书交易平台 2017, All Rights Reserved
+      </p>
+      <p>
+        联系地址：广州市从化区温泉大道882号中山大学南方学院行政楼A2-320 邮编:510970
+      </p>
+    </div> 
+   
+  
+      
+  
+ 
+ 
+  
+  </body>
+</html>
