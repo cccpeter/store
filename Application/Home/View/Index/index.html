@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>首  页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="__PUBLIC__/css/all.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    function sclick(book_id){  
+      var url="{:U('Index:shopcontent')}"+"?book_id="+book_id;
+      onclick=window.open(url);
+    }
+    </script>
+  </head>
+  <body style="margin-bottom:65px;">
+  <form action="{:U('/Home/Search/index')}" method="post">
+  <div style="width:100%;margin:0 0">
+<nav class="navbar navbar-inverse navbar-right navbar-fixed-top" role="navigation" >
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!--导航条按钮添加 -->
+          <div style="padding:10px 0px 0px 0px" style="width:100%;margin:0 0"> 
+            <div class="form-group col-xs-9">
+              <input type="text" class="form-control" name="search" placeholder="Search">
+            </div>
+            <div class="form-group col-xs-3">
+              <button type="submit" class="btn btn-default">搜索</button>
+            </div>
+          
+        </div>
+    </nav>
+</form>
+<div style="overflow-x:hidden;">
+  <div class="container"  >
+    <div class="row" style="padding:70px 0px 0px 0px;text-align:center;">
+        <div class="col-xl-12">
+          <a href="{:U('/Home/Search/booktype',array('type_id'=>1))}">
+            <img src="__PUBLIC__/images/all.jpg" width="18%" height="15%">
+          </a>
+          <a href="{:U('/Home/Search/booktype',array('type_id'=>7))}">
+            <img src="__PUBLIC__/images/文学艺术.jpg" width="18%" height="15%">
+          </a>
+          <a href="{:U('/Home/Search/booktype',array('type_id'=>4))}">
+            <img src="__PUBLIC__/images/人文社科.jpg" width="18%" height="15%">
+          </a>
+          <a href="{:U('/Home/Search/booktype',array('type_id'=>2))}">
+            <img src="__PUBLIC__/images/经济管理.jpg" width="18%" height="15%">
+          </a>
+          <a href="{:U('/Home/Search/booktype',array('type_id'=>5))}">
+            <img src="__PUBLIC__/images/生活休闲.jpg" width="18%" height="15%">
+          </a>
+
+          </div>
+          <div class="col-xl-12">
+          <a href="{:U('/Home/Search/booktype',array('type_id'=>6))}">
+            <img src="__PUBLIC__/images/外语学习.jpg" width="18%" height="15%">
+          </a>
+          <a href="{:U('/Home/Search/booktype',array('type_id'=>9))}">
+            <img src="__PUBLIC__/images/自然科学.jpg" width="18%" height="15%">
+          </a>
+          <a href="{:U('/Home/Search/booktype',array('type_id'=>3))}">
+            <img src="__PUBLIC__/images/考试教育.jpg" width="18%" height="15%">
+          </a>
+          <a href="{:U('/Home/Search/booktype',array('type_id'=>10))}">
+            <img src="__PUBLIC__/images/computer.jpg" width="18%" height="15%">
+          </a>
+          <a href="{:U('/Home/Search/booktype',array('type_id'=>8))}">
+            <img src="__PUBLIC__/images/医学.jpg" width="18%" height="15%">
+          </a>
+
+          </div>
+          
+        </div>
+      </div>
+      </div>
+    <div class="container" style="width:100%;margin-bottom:-15px;">
+      <div class="row" >
+      <div class="col-xl-12" >     
+      <div style="padding:2px -40px 30px;font-size:16px;">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="col-xs-7">
+              最新书籍
+            </div>
+            <div class="col-xs-5" style="text-align:right;">
+              <a href="{:U('/Home/Search/booktype',array('type_id'=>1))}">更多-></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      </div>
+    </div>
+        
+    
+    <!--中间段-->
+    </div><!-- container结束 -->
+    <!--contaniner   middle-->
+    <foreach name="book" item="vo">
+    <div class="container" style=" text-align: left;  vertical-align: left;padding:1px 0px 0px 0px ;overflow-x:hidden;" onclick="sclick('{$vo.book_id}')">
+      <!-- <hr  style="margin-top:-17px; height:1px;border:none;border-top:1px solid #555555;" /> -->
+      <div class="row" style="padding: 5px 0px;border-bottom:1px solid #ABABAB">
+        <div class="col-xs-3">
+          <a href="#" >
+              <img src="__PUBLIC__/uploads/{$vo.sale_photo}" width="50px" height="30px">
+          </a>
+        </div>
+        <div class="col-xs-8" style="padding:5px;font-size:16px">
+          {$vo.sale_name}
+        </div>
+
+      </div>
+     
+      <div class="row" style="padding:5px 0px;font-size:16px;line-height:28px;border-bottom:1px solid #ABABAB;">
+        <div class="col-xs-3 ">
+          <a href="#">
+              <img src="__PUBLIC__/uploads/{$vo.book_urls}"
+                     width="90px" height="80px">
+          </a>
+        </div>
+        <div class="col-xs-8" style="float:left">
+           <span >
+              {$vo.book_name} | {$vo.book_author}
+            </span>
+            <div  style="color:#ED6F00;font-size:18px">
+               {$vo.book_old}成新
+            </div>
+            <div>
+               <span>{$vo.book_time}</span>
+               <span style="padding:0px 25px">留言数{$vo.message_number}</span>
+               <span style="color:#ED6F00;font-size:18px">{$vo.book_price}</span>
+                
+            </div>
+        </div>    
+      </div>
+     <!--  <hr  style="margin-top:-0px; height:1px;border:none;border-top:1px solid #555555;" /> -->
+  </div>
+  </a>
+ </foreach>
+    
+    <!-- 底栏 -->
+    <nav class="navbar navbar-inverse  navbar-fixed-bottom" role="navigation" >
+    
+        <ul class="nav navbar-nav " >
+          <li class="active li-style col-xs-3">
+            <a href="{:U('/home/Index/index')}" class="btn btn-lg buttom">
+              <span class="glyphicon glyphicon-home " aria-hidden="true"></span>
+            </a>
+          </li>
+          <li class="li-style ">
+            <a href="{:U('/home/Index/shudong')}" class="btn btn-lg buttom">
+              <span class="glyphicon glyphicon-comment " aria-hidden="true"></span>
+            </a> 
+          </li>
+          <li class="li-style col-xs-3 ">
+            <a href="{:U('/home/Index/addgoods')}" class="btn btn-lg buttom">
+              <span class="glyphicon glyphicon-plus " aria-hidden="true"></span>
+            </a>
+          </li> 
+          <li class="li-style  ">
+            <a href="{:U('/home/Index/message')}" class="btn btn-lg buttom">
+              <span class="glyphicon glyphicon-envelope " aria-hidden="true"></span>
+            </a> 
+          </li>
+          <li class="li-style  col-xs-2">
+            <a href="{:U('/home/Index/personal')}" class="btn btn-lg buttom">
+              <span class="glyphicon glyphicon-user " aria-hidden="true"></span>
+            </a> 
+          </li>
+     
+        </ul>
+</nav>
+</div>
+
+    
+  </body>
+</html>

@@ -1,0 +1,20 @@
+总页面：
+	AddGoods	向商城添加商品
+	CheckMessage	发送短信验证，即注册端或者改密码端
+	Index 		主页面
+	LeaveMessage	留言页面
+	Login		登录页面
+	MakeOrder	下订单页面
+	Message	 	消息页面
+	Personal	个人页面
+	search	 	查找页面
+	shopcontent	商品详情
+	shudong		树洞页面
+底栏主页面：
+	Index 		主页面
+	shudong		树洞页面
+	AddGoods	向商城添加商品
+	Message	 	消息页面
+	Personal	个人页面
+
+额外添加了一个 ：css

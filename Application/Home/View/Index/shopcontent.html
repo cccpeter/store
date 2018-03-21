@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>首  页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="__PUBLIC__/css/all.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/bootstrap.min.js"></script>
+  </head>
+ <body style="padding-bottom:20px">
+ 
+    <nav class="navbar navbar-inverse navbar-right navbar-fixed-top" role="navigation" style=" overflow-x:hidden;">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!--导航条按钮添加 -->
+          <div style="padding:10px 0px 0px 0px" style="width:100%;margin:0 0">
+            <div class="form-group col-xs-4">
+               <a  type="button" class="glyphicon glyphicon-chevron-left" style="padding:5px;color:white" href="{:U('Index/index')}"></a>
+            </div>
+            <div class="form-group col-xs-7" style="color:white;font-size:19px">
+              商品详情
+            </div>
+      </div>     
+    </nav>
+   <!--商品详情图片-->
+    <div class="container-fuild" style=" overflow-x:hidden;padding:53px 0px ;">      
+      <a href="#">
+        <img src="__PUBLIC__/uploads/{$book_detal[book_urls]}" width="100%" height="250px">
+      </a>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="col-xs-4" >
+            {$book_detal['book_time']}
+          </div>
+          <div class="col-xs-4" style=" text-align: center; ">
+            {$book_detal['book_number']}本
+          </div>
+          <div class="col-xs-4" style=" text-align: right; ">
+            {$book_detal['book_old']}成新
+          </div>
+        </div>
+      </div>
+     <!--  个人部分 -->
+      <div>
+          <div class="col-xs-4" >
+            <img src="__PUBLIC__/uploads/{$user['user_photo']}" width="80px" height="80px">
+          </div>
+          <div class="col-xs-8" style=" text-align: left; ">
+            <span style="font-size:16px">
+              {$user[user_name]}
+            </span>
+            <div  style="font-size:16px;word-wrap: break-word;">
+              书名:
+              {$book_detal['book_name']}
+            </div>
+            <div  style="font-size:16px;word-wrap: break-word;">
+              简介:
+              {$book_detal['book_content']}
+            </div>
+          </div>
+      </div>
+      <!--留言部分-->
+      <div>
+        <div class="col-xs-12" style="margin-top:5px;margin-bottom:5px;border-top:1px solid #C3C5C9;padding:5px 0px 0px 0px;border-bottom:1px solid #C3C5C9;">
+          <p style=" text-align: left;font-size: 18px "> >留言
+          </p>
+        </div>
+      </div>
+      <foreach name="message" item="vo">
+      <div >
+        <div class="row" style="margin-top:2px;border-bottom:1px solid #C3C5C9;">
+          <div class="col-xs-3" style="  border-right:1px solid #666;">
+            <a href="#" style="margin:0 0"><!--用户头像-->
+               <img src="__PUBLIC__/uploads/{$vo.user_photo}" width="70px" height="50px">
+            </a>
+          </div>
+          <div class="col-xs-8" style="padding:0px 0px 0px 10px;font-size:16px">
+            <div style="padding:5px 0px ;">
+               <span>{$vo.user_name}</span>
+               <span style="float:right;">{$vo.message_time}</span>
+
+            <p></p>
+            <div style="font-size:16px;word-wrap: break-word;">
+             {$vo.message_content}
+            </div>
+          </div>
+        </div>
+       
+      </div>
+      </foreach>
+    </div> 
+    <!-- 底栏 -->
+    <nav class="navbar navbar-inverse  navbar-fixed-bottom" role="navigation" style=" overflow-x:hidden;">
+    
+        <ul class="nav navbar-nav " >
+          <li class="li-style col-xs-6" style="line-height:17px; padding:0px 5px; border-right:1px solid #666;">
+            <a href="{:U('Index/leavemessage',array('book_id'=>$book_detal['book_id']))}" class="btn btn-lg buttom">
+              <span aria-hidden="true">留言</span>
+            </a>
+          </li>
+          <li class="li-style col-xs-6">
+          <!--下单网址-->
+            <a href="{:U('Index/makeorder',array('book_id'=>$book_detal['book_id']))}" class="btn btn-lg buttom">
+              <span  aria-hidden="true">下单</span>
+            </a> 
+          </li>
+          
+     
+        </ul>
+</nav>
+
+    
+  </body>
+</html>

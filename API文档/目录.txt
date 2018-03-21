@@ -1,0 +1,6 @@
+前台的控制器目录：ftp://119.29.206.126/Application/Home/Controller/
+前台的页面：ftp://119.29.206.126/Application/Home/View/模块文件夹/模块文件
+前台控制器数据库配置目录：ftp://119.29.206.126/Application/Home/Conf/
+前后台静态配置文件目录：ftp://119.29.206.126/Public/
+后台的目录在Admin中
+

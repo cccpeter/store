@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BookStore</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="__PUBLIC__/css/all.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+        function sub(){
+          alert("修改头像成功");
+          document.getElementById("form1").submit();
+        }
+        function orderlist(){
+          var url="{:U('Index:orderlist')}";
+          onclick=window.open(url);
+        }
+        function sub1(){
+          // var name=$('#name').val();
+          // var password=$('#password').val();
+          alert("修改昵称成功");
+          document.getElementById("form2").submit();
+        }
+        function nowbook(){
+          var url="{:U('Home/Index/insalebook')}";
+          onclick=window.open(url);
+        }
+        function solebook(){
+          var url="{:U('Home/Index/buybook')}";
+          onclick=window.open(url);
+        }
+        function messagenum(){
+          var url="{:U('Home/Index/bookmessage')}";
+          onclick=window.open(url);
+        }
+    </script>
+    <style type="text/css">
+      .wrapper {  display:inline-block; background-image: url("__PUBLIC__/images/upload.jpg"); height:50px; width:50px; overflow:hidden; cursor:pointer;float: left;}
+      .wrapper input{ opacity: 0; height:50px; width:50px;}
+      .photo_info{float: right;}
+    </style>
+  </head>
+  <body style="margin-bottom:50px;overflow-x:hidden;">
+  <div class="container" style="overflow-x:hidden;">
+      <div class="row border_btm" >
+        <div class="col-xs-3" style="padding:10px  5px ; ">
+          <a data-toggle="modal" href='#modal-id1' style="margin:0 0"><!--用户头像-->
+            <img src="__PUBLIC__/uploads/{$user['user_photo']}" width="70px" height="50px">
+          </a>
+        </div>
+        <div class="col-xs-9" style="padding:10px 0px 0px 5px; border-left:1px solid #666;">
+          <p>
+            <span>{$user['user_name']}</span>
+            <span style="font-size:12px;margin-left:120px;color:#727272;">
+              <a  class="glyphicon glyphicon-edit" data-toggle="modal" href='#modal-id2' style="margin:0 0">  修改信息
+              </a>
+            </span>
+          </p>
+          <p>积分：100</p>
+        </div>
+      </div>
+      <div class="row border_btm" style="line-height:55px">
+        <div class="col-xs-6" style="  border-right:1px solid #666;" onclick="nowbook();">
+          在售书籍({$nowbook})
+        </div>
+        <div class="col-xs-6" onclick="solebook();">
+          已购书籍({$solebook})
+        </div>
+      </div>
+      <div class="row border_btm" style="line-height:55px">
+        <div class="col-xs-6" onclick="orderlist();">
+          已售书籍({$ordernum})
+        </div>       
+      </div>
+      <!-- <div class="row border_btm" style="line-height:55px">
+        <div class="col-xs-6" onclick="messagenum();">
+          书籍留言({$messagenum})
+        </div>       
+      </div> -->
+    </div>
+  
+     <div class="modal fade" id="modal-id1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" style="padding:10px">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">更换头像</h4>
+                    </div>
+                     <form action="{:U('Home/Index/personal')}" method="POST" class="form-horizontal" role="form" enctype="multipart/form-data" id="form1" >
+                    <div class="modal-body">
+                        
+                          <!--图片上传-->
+                          <table>
+                          <tr>
+                          <td>
+                            <a href="javascript:" class="wrapper"><input name="info_photo" type="file" value="" id="info_photo" onchange='PreviewImage(this)' width="50px" height="50px" /></a>
+                            <!-- <input name="upload" type="submit" value="上传" /> -->
+                          </td>
+                          <td id="photo_info" class="photo_info"></td>
+                          </tr>
+                          </table>
+
+                          <div style="padding:0px 0px 0px 90px">
+                          <!--跳转-->
+                            <a href="#" type="button" class="btn btn-default" style="color:white;background:#34352C;width:80%;height:100%;" onclick="sub();">确定更改</a>
+                          </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div><!--留言弹出窗1-->
+         <!--留言弹出窗2-->
+        <div class="modal fade" id="modal-id2">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" style="padding:10px">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">个人信息</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{:U('Home/Index/personal1')}" method="POST" class="form-horizontal" id="form2" >
+                        <!--信息填写-->
+                          <div class="form-group">
+                            <label for="firstname" class="col-sm-2 control-label">昵称</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" name="name" placeholder="请输入">
+                            </div>
+                          </div>
+                          <!-- <div class="form-group">
+                            <label for="firstname" class="col-sm-2 control-label">密码</label>
+                            <div class="col-sm-10">
+                              <input type="text" class="form-control" id="password" placeholder="请输入">
+                            </div>
+                          </div> -->
+
+                          <div style="padding:0px 0px 0px 50px">
+                          <!--跳转-->
+                            <a type="button" class="btn btn-default" style="color:white;background:#34352C;width:80%;height:100%;" onclick="sub1();">确认信息</a>
+                          </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div><!--留言弹出窗-->
+
+
+    <!-- 底栏 -->
+    <nav class="navbar navbar-inverse  navbar-fixed-bottom" role="navigation" style="overflow-x:hidden;">
+    
+        <ul class="nav navbar-nav " >
+          <li class="li-style col-xs-3">
+            <a href="{:U('/home/Index/index')}" class="btn btn-lg buttom">
+              <span class="glyphicon glyphicon-home " aria-hidden="true"></span>
+            </a>
+          </li>
+          <li class="li-style ">
+            <a href="{:U('/home/Index/shudong')}" class="btn btn-lg buttom">
+              <span class="glyphicon glyphicon-comment " aria-hidden="true"></span>
+            </a> 
+          </li>
+          <li class="li-style col-xs-2 ">
+            <a href="{:U('/home/Index/addgoods')}" class="btn btn-lg buttom">
+              <span class="glyphicon glyphicon-plus " aria-hidden="true"></span>
+            </a>
+          </li> 
+          <li class="li-style  col-xs-3">
+            <a href="{:U('/home/Index/message')}" class="btn btn-lg buttom">
+              <span class="glyphicon glyphicon-envelope " aria-hidden="true"></span>
+            </a> 
+          </li>
+          <li class="active li-style  ">
+            <a href="{:U('/home/Index/personal')}" class="btn btn-lg buttom">
+              <span class="glyphicon glyphicon-user " aria-hidden="true"></span>
+            </a> 
+          </li>
+        </ul>
+</nav>
+</div>
+  
+    <script type="text/javascript">
+      function PreviewImage(imgFile) {
+      var filextension = imgFile.value.substring(imgFile.value
+        .lastIndexOf("."), imgFile.value.length);
+      filextension = filextension.toLowerCase();
+      if ((filextension != '.jpg') && (filextension != '.gif')
+        && (filextension != '.jpeg') && (filextension != '.png')
+        && (filextension != '.bmp')) {
+       alert("对不起，系统仅支持标准格式的照片，请您调整格式后重新上传，谢谢 !");
+       imgFile.focus();
+      } else {
+       var path;
+       if (document.all)//IE
+       {
+        imgFile.select();
+        path = document.selection.createRange().text;
+        document.getElementById("photo_info").innerHTML = "";
+        document.getElementById("photo_info").style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled='true',sizingMethod='scale',src=\""
+          + path + "\")";//使用滤镜效果  
+       } else//FF
+       {
+        path = window.URL.createObjectURL(imgFile.files[0]);// FF 7.0以上
+        //path = imgFile.files[0].getAsDataURL();// FF 3.0
+        document.getElementById("photo_info").innerHTML = "<img id='img1' width='120px' height='100px' src='"+path+"'/>";
+        //document.getElementById("img1").src = path;
+       }
+      }
+     }
+    </script>
+  </body>
+</html>

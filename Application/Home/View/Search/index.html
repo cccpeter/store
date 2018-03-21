@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>首  页</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="__PUBLIC__/css/all.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.min.css">
+    <script type="text/javascript" src="__PUBLIC__/js/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/bootstrap.min.js"></script>
+  
+    <script type="text/javascript">
+    function sclick(book_id){  
+      var url="{:U('Home/Index/shopcontent')}"+"?book_id="+book_id;
+      onclick=window.open(url);
+    }
+    </script>
+    <script type="text/javascript">
+      function ontype(){
+        var type_id=$('#type_id option:selected').val();//选中的值
+        var time_id=$('#time_id option:selected').val();
+        var search_content=$('#search').val();
+        // alert(time_id+"类别"+type_id+"内容"+search_content);
+        var input = document.createElement('input');
+        input.setAttribute('type', 'hidden');
+        input.setAttribute('name', 'content');
+        input.setAttribute('value',search_content);
+        var pc = document.getElementById("org");
+        pc.insertBefore(input,null);
+        document.getElementById("form").submit();      
+      }
+    </script>
+  </head>
+  <body style="margin-bottom:50px">
+
+    <nav class="navbar navbar-inverse navbar-right navbar-fixed-top" role="navigation" style="overflow-x:hidden">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!--导航条按钮添加 -->
+        <form action="{:U('/Home/Search/index')}" method="post" id="form1">
+          <div>
+            <div style="padding:10px 0px 0px 0px" >
+              <div class="form-group col-xs-2">
+                 <a href="{:U('Home/Index/index')}" type="button" class="glyphicon glyphicon-chevron-left" style="padding:5px;color:white"></a>
+              </div>
+              <div class="form-group col-xs-7">
+                <input type="text" id="search" name="search" class="form-control" placeholder="Search" value="{$search}">
+              </div>
+              <div class="form-group col-xs-3">
+                <button type="submit" class="btn btn-default">搜索</button>
+              </div>
+            </div>
+          </div>
+        </form>
+    </nav>
+      <form action="{:U('/Home/Search/search')}" method="post" id="form">
+    <div id="org"></div>
+    <div class="container" style=" padding:60px 0px 0px 0px;overflow-x:hidden;">
+      <div class="col-xs-6" >
+        <select name="type_id" id="type_id"  style="width:155px" onchange="ontype();">
+            <foreach name="type" item="vo">
+              <option value="{$vo.type_id}">{$vo.type_name}</option>
+            </foreach>
+          </select>
+      </div>
+      <div class="col-xs-6"  >
+        <select name="time_id" id="time_id"  style="width:155px" onchange="ontype();">
+          <foreach name="time" item="ti">
+            <option value="{$ti.time_id}">{$ti.time}</option>
+          </foreach>
+          </select>
+      </div>
+    </div>
+    </option>
+   </form>
+   
+
+   <foreach name="book_search" item="vo">
+    <div class="container" style="padding:20px 0px 0px 0px; text-align: left; vertical-align: left;overflow-x:hidden " onclick="sclick('{$vo.book_id}')">
+     
+      <!-- <hr  style="margin-top:-17px; height:1px;border:none;border-top:1px solid #555555;" /> -->
+      <div class="row" style="margin-top:-15px;border-bottom:1px solid #ABABAB;overflow-x:hidden;">
+        <div class="col-xs-3">
+          <a href="#" >
+              <img src="__PUBLIC__/uploads/{$vo.sale_photo}" width="60px" height="30px">
+          </a>
+        </div>
+        <div class="col-xs-9" style="padding:5px;font-size:16px">
+          {$vo.sale_name}
+        </div>
+
+      </div>
+     
+      <div class="row" style="padding:5px 0px;font-size:16px;line-height:28px;overflow-x:hidden;">
+        <div class="col-xs-3 ">
+          <a href="#" >
+              <img src="__PUBLIC__/uploads/{$vo.book_urls}"
+                  width="90px"  height="80px">
+          </a>
+        </div>
+        <div class="col-xs-9" style="float:left">
+           <span >
+              {$vo.book_name} | {$vo.book_author}
+            </span>
+            <div  style="color:#ED6F00;font-size:18px">
+               {$vo.book_price}
+            </div>
+            <div>
+               <span>{$vo.book_time}</span>
+               <span style="padding:0px 25px">留言数{$vo.message_number}</span>
+               <span style="color:#ED6F00;">{$vo.book_old}成新</span>
+                
+            </div>
+        </div>    
+          
+      </div>
+      <hr  style="margin-top:-0px; height:1px;border:none;border-top:1px solid #555555;" />
+  </div>
+</foreach>
+    
+    
+      
+ 
+
+    <!-- 底栏 -->
+    <nav class="navbar navbar-inverse  navbar-fixed-bottom" role="navigation" style="overflow-x:hidden">
+    
+        <ul class="nav navbar-nav " >
+          <li class="active li-style col-xs-3">
+            <a href="{:U('/Home/Index/index')}" class="btn btn-lg buttom">
+              <span class="glyphicon glyphicon-home " aria-hidden="true"></span>
+            </a>
+          </li>
+          <li class="li-style ">
+            <a href="{:U('/home/Index/shudong')}" class="btn btn-lg buttom">
+              <span class="glyphicon glyphicon-comment " aria-hidden="true"></span>
+            </a> 
+          </li>
+          <li class="li-style col-xs-3 ">
+            <a href="{:U('/home/Index/addgoods')}" class="btn btn-lg buttom">
+              <span class="glyphicon glyphicon-plus " aria-hidden="true"></span>
+            </a>
+          </li> 
+          <li class="li-style  ">
+            <a href="{:U('/home/Index/message')}" class="btn btn-lg buttom">
+              <span class="glyphicon glyphicon-envelope " aria-hidden="true"></span>
+            </a> 
+          </li>
+          <li class="li-style  col-xs-2">
+            <a href="{:U('/home/Index/personal')}" class="btn btn-lg buttom">
+              <span class="glyphicon glyphicon-user " aria-hidden="true"></span>
+            </a> 
+          </li>
+     
+        </ul>
+</nav>
+
+
+    
+  </body>
+</html>

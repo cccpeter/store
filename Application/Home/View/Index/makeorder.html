@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BookStore</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="__PUBLIC__/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="__PUBLIC__/css/all.css">
+    <script src="__PUBLIC__/jq/jquery-3.1.0.min.js"></script>
+    <script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
+     <script type="text/javascript">
+    function sub(){
+      var url="{:U('Index/makeorder')}";
+      var book_id="{$book['book_id']}";
+      var indexurl=$('#bookid').val();
+      var remark=$('#remark').val();
+      if(remark==''){
+        alert('给卖家留个言呗~');
+      }else{
+        var local=$('#local').val();
+      $.post(url,{remark:remark,local:local,book_id:book_id},
+        function(data){
+          if(data=="0"){
+           alert("该书已经卖完。");
+          }else{
+            alert("下单成功，请留意你的短信通知并与卖家取得联系并交易。");
+            location.href=indexurl;
+          }
+      },
+      "text");//这里返回的类型有：json,html,xml,text
+      }
+    }
+    </script>
+     <style type="text/css">
+        .satisfied_style
+        {
+          width:100%;
+          margin:0 0;
+
+        }
+        body{margin-bottom: 50px;}
+        input{ border:none; }
+        label{font-size: 15px;}
+      
+    </style>
+  </head>
+  <body style="margin-bottom:60px;">
+  <nav class="navbar navbar-inverse navbar-right navbar-fixed-top" role="navigation"  style="overflow-x:hidden">
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!--导航条按钮添加 -->
+           <div style="padding:10px 0px 0px 0px" >
+           <div class="form-group col-xs-5">
+               <a href="{:U('/Home/Index/shopcontent',array('book_id'=>$book_id))}" type="button" class="glyphicon glyphicon-chevron-left" style="padding:5px;color:white"></a>
+            </div>
+            <div class="form-group col-xs-6" style="color:white;font-size:19px">
+              订单
+            </div>
+            
+      </div>     
+      </div>     
+    </nav>
+  <div class="container" style="margin-top:65px;float:right;" >
+    <div class="col-xs-12 border_btm" style="padding:5px 0px;">
+       <div class="col-xs-2" >
+          <img src="__PUBLIC__/uploads/{$user['user_photo']}" width="30px" height="30px">
+           <!--  <img src="__PUBLIC__/uploads/{$user['user_photo']}" width="100%" height="100%"> -->
+        </div>
+        <div class="col-xs-10" style=" text-align: left; ">
+          <span style="font-size:14px">
+              {$user['user_name']}
+          </span>
+        </div>
+    </div>
+    <div class="col-xs-12 border_btm" style="padding:10px 0px 1px 1px;">
+      <div  class="col-xs-3 " >
+         <img src="__PUBLIC__/images/bookstores.png" width="80px" height="100px">
+        
+        
+      </div>
+      <div class="col-xs-9"  style="border-left:1px solid #F5F6EB;">
+        <ul style="padding:5px 0px;">
+          <li class="border_btm">
+            <label>书名：</label>
+            {$book['book_name']}
+          
+          </li>
+          <li class="border_btm" style="padding:5px 0px;">
+            <label>价格：</label>
+            {$book['book_price']}
+          </li>
+          <li >
+            <label>几成新：</label>
+             {$book['book_old']} 
+          </li>
+        </ul>
+      </div>
+      
+    </div>
+    <div class="col-xs-12 border_btm" style="padding:10px 15px; ">
+      <label>作者：</label>
+      {$book['book_author']}
+    </div>
+    
+    <div class="col-xs-12 border_btm" style="padding:10px 15px;">
+      <label>简介：</label>
+      {$book['book_content']}  
+    </div>
+    <div class="col-xs-12 border_btm" style="padding:10px 15px; ">
+      <label>留言：</label>
+      <input type="text" id="remark" placeholder="请输入" size="16"> 
+    </div>
+    <div class="col-xs-12 border_btm" style="padding:10px 15px; ">
+      <label>收货地址：</label>
+      <span style="float:right;font-size:14px;color:#727272;">*仅在本校范围内</span>   
+    </div>
+
+       
+    </div>
+    <nav class="navbar navbar-inverse  navbar-fixed-bottom" role="navigation" style=" overflow-x:hidden;">
+   
+    
+      <div class="col-xs-6" style="text-align: left;padding:10px ">
+
+        <label style="font-size:18px;color:white;">￥{$book['book_price']}</label>
+      </div>
+      <input type="hidden" id="bookid" value="{:U('/Home/Index/index',array('book_id'=>$book.book_id))}">
+      <div class="col-xs-6" style="text-align: right;padding:0px 0px 0px 1px;">
+        <a type="button" class="btn btn-default"  style=" color:white;background:#34352C;font-size:24px;width:70%;border:1px solid #ABABAB"  onclick="sub();">确认</a>
+      </div>
+
+ 
+        
+    </nav>
+
+       
+  </body>
+</html>
